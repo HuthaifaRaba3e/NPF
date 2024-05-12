@@ -28,7 +28,7 @@ def callback(ch, method, properties, body):
     write_to_influxdb(switch_id, temperature)
 
 def get_temperature(switch_id):
-    command = f"snmpget -v 2c -c public 192.168.1.1 1.3.6.1.4.1.9.9.13.1.3.1.3"
+    command = f"snmpget -v 2c -c public 192.168.1.100 1.3.6.1.4.1.9.9.13.1.3.1.3"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     # Extract temperature from the result
     temperature = result.stdout.strip().split()[-1]
